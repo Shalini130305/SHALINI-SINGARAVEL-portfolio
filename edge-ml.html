@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Edge-ML Drive System | Project Dashboard | Shalini Singaravel</title>
+<meta name="description" content="Project dashboard for the Edge-ML Drive System: driver drowsiness detection with computer vision and facial landmark analysis. Simulated demo, not live camera inference.">
+<script>document.documentElement.classList.add('js')</script>
+<link rel="stylesheet" href="../style.css">
+<script src="../script.js" defer></script>
+<script src="../js/edge-ml.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="../index.html" aria-label="Portfolio home">SS</a>
+    <button class="menu-btn" aria-expanded="false" aria-controls="menu">Menu</button>
+    <nav id="menu" aria-label="Portfolio">
+      <a href="../index.html">← Portfolio</a><a href="../index.html#projects">Projects</a><a href="../index.html#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="wrap">
+  <section class="dash-head">
+    <p class="crumb"><a href="../index.html">Portfolio</a> / <a href="../index.html#projects">Projects</a> / Edge-ML</p>
+    <h1>Edge-ML Drive System</h1>
+    <p class="muted">Real-time driver drowsiness detection using computer vision and facial landmark analysis.</p>
+    <div class="badges"><span class="badge">Python</span><span class="badge">OpenCV</span><span class="badge">MediaPipe</span><span class="badge">TensorFlow Lite</span></div>
+    <div class="cta">
+      <a class="btn primary" href="https://github.com/Shalini130305/edgeml-drive-system" target="_blank" rel="noopener">View Source Code</a>
+      <a class="btn" href="../index.html#projects">← Back to portfolio</a>
+    </div>
+  </section>
+
+  <p class="legend">Labels: <span class="tag v">Verified</span> from my resume and project summary · <span class="tag s">Simulated demo</span> · <span class="tag r">Requires implementation</span></p>
+
+  <div class="stack">
+    <section class="card">
+      <h2>The problem and purpose</h2>
+      <p class="muted">Drowsiness reduces a driver’s attention and reaction time, which makes it a serious road-safety risk. This project explores whether a camera can detect signs of drowsiness in real time by analyzing facial landmarks in video frames.</p>
+      <p class="muted">The stack includes TensorFlow Lite, which is designed for on-device inference, so latency matters. The project’s work on the inference pipeline targets that goal.</p>
+    </section>
+
+    <section class="card">
+      <h2>Workflow <span class="tag r">Intended design: confirm against code</span></h2>
+      <div class="pipeline">
+        <div class="stage">Camera input</div><span class="arrow" aria-hidden="true">→</span>
+        <div class="stage">Frame processing</div><span class="arrow" aria-hidden="true">→</span>
+        <div class="stage">Facial landmark analysis</div><span class="arrow" aria-hidden="true">→</span>
+        <div class="stage">Drowsiness detection</div><span class="arrow" aria-hidden="true">→</span>
+        <div class="stage">Alert / result</div>
+      </div>
+      <p class="muted small">These stages come from my project brief. They have not yet been checked line by line against the repository, so present them as the intended design until they are confirmed.</p>
+    </section>
+
+    <section class="card">
+      <h2>Interactive demo <span class="tag s">Simulated</span></h2>
+      <p class="muted">This is not camera inference. It plays a synthetic eye-openness signal through a demo rule: openness below 0.20 for 15 consecutive frames raises an alert.</p>
+      <div class="ctrl">
+        <button class="btn primary" data-mode="attentive" type="button">Attentive driver</button>
+        <button class="btn" data-mode="drowsy" type="button">Drowsy driver</button>
+        <span class="status" id="status" aria-live="polite">Choose a scenario to start.</span>
+      </div>
+      <div class="chart-box">
+        <svg id="signal" viewBox="0 0 600 200" role="img" aria-label="Simulated eye-openness signal over 180 frames, with alert regions shaded red"></svg>
+      </div>
+      <p class="muted">Frame: <strong id="frame">0 / 180</strong> · Alerts raised: <strong id="alerts">0</strong></p>
+    </section>
+
+    <section class="card">
+      <h2>Reported result <span class="tag v">Verified (resume)</span></h2>
+      <p class="muted">Optimized the inference pipeline, reducing latency by <strong>30%</strong>.</p>
+      <div class="hbar"><span>Before</span><div class="track"><div class="fill before" style="width:100%"></div></div><span>100%</span></div>
+      <div class="hbar"><span>After</span><div class="track"><div class="fill after" style="width:70%"></div></div><span>70%</span></div>
+      <p class="muted small">The bars only illustrate the reported 30% reduction. No absolute timings are shown because none have been supplied.</p>
+    </section>
+
+    <section class="card">
+      <h2>What is verified, simulated, or still to build</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Feature</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>Real-time driver drowsiness detection application</td><td><span class="tag v">Verified (resume)</span></td></tr>
+            <tr><td>Facial landmark analysis</td><td><span class="tag v">Verified (resume)</span></td></tr>
+            <tr><td>30% inference latency reduction</td><td><span class="tag v">Reported, not re-measured here</span></td></tr>
+            <tr><td>Signal chart, frame counter and demo alert rule</td><td><span class="tag s">Simulated demo</span></td></tr>
+            <tr><td>Live webcam inference inside this web page</td><td><span class="tag r">Requires implementation</span></td></tr>
+            <tr><td>Running the original Python app with its models</td><td><span class="tag r">Requires Python environment and model files</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Limitations and possible next steps</h2>
+      <ul class="plain">
+        <li>This page was built without opening the repository, so confirm the workflow and techniques before presenting them in interviews.</li>
+        <li>The dashboard uses synthetic signals, not camera input or real drivers.</li>
+        <li>Landmark-based systems commonly struggle with lighting changes, head pose, glasses and partial occlusion. These should be tested.</li>
+        <li>Possible next steps: calibrate thresholds on labeled footage, benchmark latency on the target device, and log alert events.</li>
+      </ul>
+    </section>
+  </div>
+</main>
+
+<footer><div class="wrap">© <span id="year">2026</span> Shalini Singaravel · <a href="../index.html">Back to portfolio</a></div></footer>
+<button id="to-top" aria-label="Back to top">↑</button>
+</body>
+</html>
